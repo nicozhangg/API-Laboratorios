@@ -4,21 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuarios</title>
-    <style>
-        body {
-            text-align: center;
-        }
-        .user-table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        .user-table th, .user-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <h1>Lista de Usuarios</h1>
@@ -34,28 +21,6 @@
         <tbody id="user-list"></tbody>
     </table>
 
-    <script>
-        document.getElementById("load-users").addEventListener("click", function () {
-            fetch("https://reqres.in/api/users?page=1")
-                .then(response => response.json())
-                .then(data => {
-                    const userList = document.getElementById("user-list");
-                    document.getElementById("user-table").style.display = "table";
-                    userList.innerHTML = "";
-                    data.data.forEach(user => {
-                        const row = document.createElement("tr");
-                        row.innerHTML = `
-                            <td>${user.first_name} ${user.last_name}</td>
-                            <td>${user.email}</td>
-                            <td><img src="${user.avatar}" alt="${user.first_name} ${user.last_name}"></td>
-                        `;
-                        userList.appendChild(row);
-                    });
-                })
-                .catch(error => {
-                    console.error("Error al obtener los usuarios:", error);
-                });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
